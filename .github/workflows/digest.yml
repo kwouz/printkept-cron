@@ -1,11 +1,12 @@
 name: digest
 on:
   schedule:
-    - cron: "0 0 * * *" # 00:00 UTC = 08:00 по Бали
+    - cron: "0 0 * * *" # 00:00 UTC = 08:00 Bali
   workflow_dispatch:
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger printkept-digest
-        run: curl -fsS -X POST -H "Authorization: Bearer ${{ secrets.DIGEST_TRIGGER_SECRET }}" https://printkept-digest.litaui100.workers.dev/run
+        run: |
+          curl -fsS -X POST -H "Authorization: Bearer ${{ secrets.DIGEST_TRIGGER_SECRET }}" https://printkept-digest.litaui100.workers.dev/run
